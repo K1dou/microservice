@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.kidou.hr_worker.model.Worker;
 import com.kidou.hr_worker.repository.WorkerRepository;
 
-import jakarta.websocket.server.PathParam;
-
 @RestController
 @RequestMapping(value = "/workers")
 public class WorkerController {
