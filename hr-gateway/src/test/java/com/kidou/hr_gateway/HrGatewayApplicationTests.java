@@ -1,10 +1,10 @@
-package com.kidou.hr_api_gateway;
+package com.kidou.hr_gateway;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class HrApiGatewayApplicationTests {
+class HrGatewayApplicationTests {
 
 	@Test
 	void contextLoads() {

@@ -1,13 +1,13 @@
-package com.kidou.hr_api_gateway;
+package com.kidou.hr_gateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class HrApiGatewayApplication {
+public class HrGatewayApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(HrApiGatewayApplication.class, args);
+		SpringApplication.run(HrGatewayApplication.class, args);
 	}
 
 }
