@@ -22,3 +22,8 @@ spring:
           uri: lb://hr-worker
           predicates:
             - Path=/workers/**
+
+    http:
+      client:
+        connect-timeout: 2000
+        response-timeout: 3s
