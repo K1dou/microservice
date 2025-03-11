@@ -17,11 +17,16 @@ spring:
         - id: hr-payroll
           uri: lb://hr-payroll
           predicates:
-            - Path=/payments/**
+            - Path=/hr-payroll/**
+          filters:
+            - RewritePath=/hr-payroll/(?<segment>.*), /${segment}
+
         - id: hr-worker
           uri: lb://hr-worker
           predicates:
-            - Path=/workers/**
+            - Path=/hr-worker/**
+          filters:
+            - RewritePath=/hr-worker/(?<segment>.*), /${segment}
 
     http:
       client:
