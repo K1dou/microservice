@@ -14,6 +14,13 @@ spring:
   cloud:
     gateway:
       routes:
+        - id: hr-oauth
+          uri: lb://hr-oauth
+          predicates:
+            - Path=/hr-oauth/**
+          filters:
+            - RewritePath=/hr-oauth/(?<segment>.*), /${segment}
+
         - id: hr-user
           uri: lb://hr-user
           predicates:
