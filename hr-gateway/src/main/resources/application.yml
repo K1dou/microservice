@@ -20,6 +20,8 @@ spring:
             - Path=/hr-oauth/**
           filters:
             - RewritePath=/hr-oauth/(?<segment>.*), /${segment}
+            - RemoveRequestHeader=Cookie
+            - RemoveRequestHeader=Set-Cookie
 
         - id: hr-user
           uri: lb://hr-user
@@ -27,6 +29,8 @@ spring:
             - Path=/hr-user/**
           filters:
             - RewritePath=/hr-user/(?<segment>.*), /${segment}
+            - RemoveRequestHeader=Cookie
+            - RemoveRequestHeader=Set-Cookie
 
         - id: hr-payroll
           uri: lb://hr-payroll
@@ -34,6 +38,8 @@ spring:
             - Path=/hr-payroll/**
           filters:
             - RewritePath=/hr-payroll/(?<segment>.*), /${segment}
+            - RemoveRequestHeader=Cookie
+            - RemoveRequestHeader=Set-Cookie
 
         - id: hr-worker
           uri: lb://hr-worker
@@ -41,8 +47,33 @@ spring:
             - Path=/hr-worker/**
           filters:
             - RewritePath=/hr-worker/(?<segment>.*), /${segment}
+            - RemoveRequestHeader=Cookie
+            - RemoveRequestHeader=Set-Cookie
 
     http:
       client:
         connect-timeout: 2000
         response-timeout: 3s
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:9000/oauth2/jwks
+      # client:
+      #   registration:
+      #     hr-api-gateway:
+      #       client-id: hr-gateway
+      #       client-secret: secret
+      #       authorization-grant-type: authorization_code
+      #       redirect-uri: "http://localhost:8765/login/oauth2/code/{registrationId}"
+      #       scope: read,write
+      #       client-name: hr-api-gateway
+      #       provider: hr-gateway
+      #   provider:
+      #     hr-gateway:
+      #       issuer-uri: http://localhost:9000
+      #       authorization-uri: http://localhost:9000/oauth2/authorize
+      #       token-uri: http://localhost:9000/oauth2/token
+      #       user-info-uri: http://localhost:9000/userinfo
+      #       jwk-set-uri: http://localhost:9000/.well-known/jwks.json
+      #       user-name-attribute: sub
