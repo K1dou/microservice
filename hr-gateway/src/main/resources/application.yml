@@ -1,12 +1,17 @@
 server:
   port: 8765
 
+logging.level:
+  org.springframework.security: DEBUG
+  org.springframework.security.oauth2: DEBUG
+
+
 eureka:
   client:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: http://localhost:8761/eureka/
 
 spring:
   application:
@@ -20,8 +25,6 @@ spring:
             - Path=/hr-oauth/**
           filters:
             - RewritePath=/hr-oauth/(?<segment>.*), /${segment}
-            - RemoveRequestHeader=Cookie
-            - RemoveRequestHeader=Set-Cookie
 
         - id: hr-user
           uri: lb://hr-user
@@ -29,8 +32,6 @@ spring:
             - Path=/hr-user/**
           filters:
             - RewritePath=/hr-user/(?<segment>.*), /${segment}
-            - RemoveRequestHeader=Cookie
-            - RemoveRequestHeader=Set-Cookie
 
         - id: hr-payroll
           uri: lb://hr-payroll
@@ -38,8 +39,6 @@ spring:
             - Path=/hr-payroll/**
           filters:
             - RewritePath=/hr-payroll/(?<segment>.*), /${segment}
-            - RemoveRequestHeader=Cookie
-            - RemoveRequestHeader=Set-Cookie
 
         - id: hr-worker
           uri: lb://hr-worker
@@ -47,8 +46,8 @@ spring:
             - Path=/hr-worker/**
           filters:
             - RewritePath=/hr-worker/(?<segment>.*), /${segment}
-            - RemoveRequestHeader=Cookie
-            - RemoveRequestHeader=Set-Cookie
+      default-filters:
+        - TokenRelay=
 
     http:
       client:
@@ -56,24 +55,22 @@ spring:
         response-timeout: 3s
   security:
     oauth2:
+      client:
+        registration:
+          app-client:
+            provider: hr-oauth
+            client-id: app-client
+            client-secret: my-new-secret
+            authorization-grant-type: authorization_code
+            redirect-uri:
+              - "http://localhost:8765/login/oauth2/code/{registrationId}"
+            scope: openid, profile, accounts.read, accounts.write
+        provider:
+          hr-oauth:
+            issuer-uri: http://localhost:9000
       resourceserver:
         jwt:
           jwk-set-uri: http://localhost:9000/oauth2/jwks
-      # client:
-      #   registration:
-      #     hr-api-gateway:
-      #       client-id: hr-gateway
-      #       client-secret: secret
-      #       authorization-grant-type: authorization_code
-      #       redirect-uri: "http://localhost:8765/login/oauth2/code/{registrationId}"
-      #       scope: read,write
-      #       client-name: hr-api-gateway
-      #       provider: hr-gateway
-      #   provider:
-      #     hr-gateway:
-      #       issuer-uri: http://localhost:9000
-      #       authorization-uri: http://localhost:9000/oauth2/authorize
-      #       token-uri: http://localhost:9000/oauth2/token
-      #       user-info-uri: http://localhost:9000/userinfo
-      #       jwk-set-uri: http://localhost:9000/.well-known/jwks.json
-      #       user-name-attribute: sub
+
+
+

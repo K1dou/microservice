@@ -1,44 +1,32 @@
 server:
   port: 9000
 
-logging:
-  level:
-    org:
-      springframework:
-        security: trace
-
-rsa:
-  public-key: classpath:certs/public.pem
-  private-key: classpath:certs/private.pem
-
 spring:
   application:
     name: hr-oauth
-#   security:
-#     oauth2:
-#       authorizationserver:
-#         issuer: http://localhost:9000
-#         client:
-#           hr-gateway:
-#             registration:
-#               client-id: hr-gateway
-#               client-secret: "{noop}secret"
-#               client-name: hr-gateway
-#               client-authentication-methods:
-#                 - client_secret_basic
-#               authorization-grant-types:
-#                 - authorization_code
-#                 - refresh_token
-#               redirect-uris:
-#                 - http://127.0.0.1:8080/login/oauth2/code/hr-gateway
-#                 - http://127.0.0.1:8080/authorized
-#               scopes:
-#                 - openid
-#                 - hr-oauth.read
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 80876775106-p337hn37l7njbdvghahj3iljvl0crqi6.apps.googleusercontent.com
+            client-secret: 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
+            scope:
+              - email
+              - profile
+              - openid
 
+          github:
+            client-id: 1b1b1b1b1b1b1b1b1b1b
+            client-secret: 2b2b
+            scope:
+              - user
+              - user:email
 eureka:
   instance:
     instance_id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
+
+

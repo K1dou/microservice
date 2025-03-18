@@ -14,17 +14,18 @@ import org.springframework.security.oauth2.jwt.Jwt;
 public class RoleConverter implements Converter<Jwt, Collection<GrantedAuthority>> {
 
     @Override
-    public Collection<GrantedAuthority> convert(Jwt source) {
-
-        Map<String, Object> realm_access = (Map<String, Object>) source.getClaims().get("realm_access");
-        if (realm_access == null || realm_access.isEmpty()) {
-            return new ArrayList<>();
+    public Collection<GrantedAuthority> convert(Jwt jwt) {
+        List<String> roles = jwt.getClaimAsStringList("roles");
+        if (roles == null) {
+            roles = jwt.getClaimAsStringList("scope"); // Alternativa para "scope".
         }
-        Collection<GrantedAuthority> returnValue = ((List<String>) realm_access.get("roles"))
-                .stream().map(roleName -> "ROLE_" + roleName)
+        if (roles == null) {
+            return List.of(); // Retorna uma lista vazia se nenhuma lista for encontrada.
+        }
+        return roles.stream()
+                .map(role -> role.startsWith("ROLE_") ? role : "ROLE_" + role)
                 .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());
-        return returnValue;
-
     }
+
 }
