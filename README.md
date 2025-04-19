@@ -5,7 +5,7 @@
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
 ## 📝 Descrição
-**Microservice** é um projeto desenvolvido em **Java**, com suporte a **HTML**, voltado para [insira aqui o propósito do projeto, por exemplo: "gerenciamento eficiente de usuários em sistemas distribuídos"]. Este projeto é uma demonstração de boas práticas em arquitetura de microserviços.
+**Microservice** é um projeto desenvolvido em **Java**, voltado para [insira aqui o propósito do projeto, por exemplo: "gerenciamento eficiente de usuários em sistemas distribuídos"]. Este projeto é uma demonstração de boas práticas em arquitetura de microserviços.
 
 ---
 
@@ -20,7 +20,7 @@
 ## 🛠️ Tecnologias Utilizadas
 
 - **Java** - Backend principal.
-- **HTML** - Layouts simples para interface ou templates.
+- **Spring** -  Ecossistema Spring
 - **[Adicione outras tecnologias aqui, se necessário]**
 
 ---
@@ -37,7 +37,7 @@
    ```
 3. Compile e execute o projeto:
    ```bash
-   [insira o comando de execução, ex: mvn spring-boot:run]
+   mvn spring-boot:run
    ```
 4. Acesse no navegador:
    ```
@@ -49,7 +49,7 @@
 ## 🧪 Testes
 Execute os testes para garantir que tudo está funcionando corretamente:
 ```bash
-[insira o comando para rodar os testes, ex: mvn test]
+mvn test
 ```
 
 ---
@@ -88,6 +88,6 @@ Este projeto está licenciado sob a [MIT License](LICENSE).
 
 ### 💡 Autor
 Desenvolvido por [K1dou](https://github.com/K1dou).  
-Sinta-se à vontade para me chamar no [LinkedIn](#) ou no [e-mail](mailto:seu.email@exemplo.com). 😄
+Sinta-se à vontade para me chamar no [LinkedIn](https://www.linkedin.com/in/marcelo-henrique-de-jesus-290a37202/) ou no [e-mail](hique1276@gmail.com). 😄
 ```
 
