@@ -88,6 +88,6 @@ Este projeto está licenciado sob a [MIT License](LICENSE).
 
 ### 💡 Autor
 Desenvolvido por [K1dou](https://github.com/K1dou).  
-Sinta-se à vontade para me chamar no [LinkedIn](https://www.linkedin.com/in/marcelo-henrique-de-jesus-290a37202/) ou no [e-mail](hique1276@gmail.com). 😄
+Sinta-se à vontade para me chamar no [LinkedIn](https://www.linkedin.com/in/marcelo-henrique-290a37202/) ou no [e-mail](hique1276@gmail.com). 😄
 ```
 
