@@ -21,7 +21,6 @@
 
 - **Java** - Backend principal.
 - **Spring** -  Ecossistema Spring
-- **[Adicione outras tecnologias aqui, se necessário]**
 
 ---
 
