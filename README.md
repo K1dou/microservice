@@ -5,7 +5,7 @@
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
 ## 📝 Descrição
-**Microservice** é um projeto desenvolvido em **Java**, voltado para [insira aqui o propósito do projeto, por exemplo: "gerenciamento eficiente de usuários em sistemas distribuídos"]. Este projeto é uma demonstração de boas práticas em arquitetura de microserviços.
+**Microservice** é um projeto desenvolvido em **Java**, voltado para a gestão de folha de pagamento de funcionários. Ele é responsável por calcular salários, descontos, benefícios e gerar relatórios financeiros de forma automatizada, seguindo os princípios de arquitetura de microsserviços. Utiliza o Spring Framework para garantir escalabilidade, modularidade e facilidade de integração com outros serviços corporativos.
 
 ---
 
